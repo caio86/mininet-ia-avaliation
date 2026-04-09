@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from mininet.net import Mininet
-from mininet.node import Controller, OVSKernelSwitch
+from mininet.node import OVSBridge
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.topo import Topo
@@ -45,7 +45,7 @@ class BotnetTopo(Topo):
 def run():
     topo = BotnetTopo()
     # Initialize the network with the custom topology
-    net = Mininet(topo=topo, waitConnected=True)
+    net = Mininet(topo=topo, switch=OVSBridge, controller=None, waitConnected=True)
 
     info("*** Starting Network ***\n")
     net.start()
@@ -58,7 +58,6 @@ def run():
 
     info("*** Stopping Network ***\n")
     net.stop()
-
 
 if __name__ == "__main__":
     # Set the log level to info to see Mininet output
