@@ -1,0 +1,7 @@
+services:
+  mininet:
+    build: .
+    image: mininet-ai-avaliation
+    privileged: true
+    stdin_open: true
+    tty: true
